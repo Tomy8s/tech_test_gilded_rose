@@ -18,24 +18,7 @@ class GildedRose
         reduce_quality_of(item)
       end
 
-
-
-      #decreases sell_in
       decrease_sell_in_of(item)
-
-    #   #decreases quality
-    #   if item.sell_in < 0
-    #     if item.name != "Aged Brie"
-    #       if item.name != "Backstage passes to a TAFKAL80ETC concert"
-    #         if item.name != "Sulfuras, Hand of Ragnaros"
-    #         end
-    #       else
-    #         item.quality = item.quality - item.quality
-    #       end
-    #     else
-          
-    #     end
-    #   end
     end
   end
 

@@ -4,7 +4,7 @@ describe GildedRose do
   let (:items) { [
     Item.new(name="+5 Dexterity Vest", sell_in=5, quality=3),
     Item.new(name="Elixir of the Mongoose", sell_in=5, quality=47),
-    Item.new(name="Aged Brie", sell_in=5, quality=47),
+    Item.new(name="Aged Brie", sell_in=5, quality=37),
     Item.new(name="Sulfuras, Hand of Ragnaros", sell_in=5, quality=25),
     Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=47),
     Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=43),
@@ -32,6 +32,11 @@ describe GildedRose do
         4.times{ subject.update_quality }
         expect(items[0].quality).to eq 0
       end
+
+      it "decreases quality by 2 after sell by" do
+        6.times{ subject.update_quality }
+        expect{ subject.update_quality }.to change{ items[1].quality }.by(-2)
+      end
     end
 
     context "when Aged Brie ages([2])" do
@@ -39,8 +44,13 @@ describe GildedRose do
         expect{ subject.update_quality }.to change{ items[2].quality }.by(+1)
       end
 
+      it "increases quality by 2 after sell by" do
+        6.times{ subject.update_quality }
+        expect{ subject.update_quality }.to change{ items[2].quality }.by(+2)
+      end
+
       it "does not increase quality over 50" do
-        4.times{ subject.update_quality }
+        14.times{ subject.update_quality }
         expect(items[2].quality).to eq 50
       end
     end

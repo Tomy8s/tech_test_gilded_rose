@@ -15,10 +15,13 @@ describe GildedRose do
   ]
 
   let(:subject) { GildedRose.new(items) }
-  describe "#update_quality" do
-    it "does not change the name" do
-      subject.update_quality
-      expect(items[0].name).to eq "+5 Dexterity Vest"
+
+  context 'when any item ages' do
+    describe "#update_quality" do
+      it "does not change the name" do
+        subject.update_quality
+        expect(items[0].name).to eq "+5 Dexterity Vest"
+      end
     end
   end
 

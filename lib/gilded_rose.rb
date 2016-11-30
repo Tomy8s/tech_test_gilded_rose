@@ -14,6 +14,8 @@ class GildedRose
         increase_quality_of_cheese(item)
       when "Backstage passes to a TAFKAL80ETC concert"
         increase_quality_of_passes(item)
+      when "Conjured Mana Cake"
+        2.times{ reduce_quality_of(item) }
       else
         reduce_quality_of(item)
       end

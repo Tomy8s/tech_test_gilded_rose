@@ -40,12 +40,16 @@ class GildedRose
     end
   end
 
-  def reduce_quality_of(item)
-    item.quality -= 1 unless item.quality <= 0
+  def reduce_quality_of(item, reduction = 1)
+    item.quality -= reduction unless item.quality <= 0
   end
 
   def increase_quality_of(item)
     item.quality += 1 unless item.quality >= 50
+  end
+
+  def decrease_sell_in_of(item)
+    item.sell_in -= 1
   end
 end
 

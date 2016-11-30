@@ -12,7 +12,6 @@ class GildedRose
       #increases quality
       if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert"
         if item.name != "Sulfuras, Hand of Ragnaros"
-          reduce_quality_of(item)
         end
       else
         increase_quality_of(item)
@@ -30,6 +29,8 @@ class GildedRose
       when "Aged Brie"
       when "Backstage passes to a TAFKAL80ETC concert"
       when "Sulfuras, Hand of Ragnaros"
+      else
+        reduce_quality_of(item)
       end
 
 

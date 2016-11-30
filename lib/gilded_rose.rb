@@ -28,8 +28,7 @@ class GildedRose
       case item.name
       when "Sulfuras, Hand of Ragnaros"
       when "Aged Brie"
-        increase_quality_of(item)
-        increase_cheese_quality_again(item)
+        increase_quality_of_cheese(item)
       when "Backstage passes to a TAFKAL80ETC concert"
       else
         reduce_quality_of(item)
@@ -67,7 +66,8 @@ class GildedRose
     item.quality += increase unless item.quality >= 50
   end
 
-  def increase_cheese_quality_again(item)
+  def increase_quality_of_cheese(item)
+    increase_quality_of(item)
     increase_quality_of(item) if item.sell_in < 0
   end
 

@@ -7,26 +7,9 @@ class GildedRose
   def update_quality
     @items.each do |item|
 
-
-
-      #increases quality
-      if item.name != "Backstage passes to a TAFKAL80ETC concert"
-        if item.name != "Sulfuras, Hand of Ragnaros"
-        end
-      # else
-      #   increase_quality_of(item)
-      #   if item.name == "Backstage passes to a TAFKAL80ETC concert"
-      #     if item.sell_in < 11
-      #         increase_quality_of(item)
-      #     end
-      #     if item.sell_in < 6
-      #       increase_quality_of(item)
-      #     end
-      #   end
-      end
-
       case item.name
       when "Sulfuras, Hand of Ragnaros"
+        #do nothing
       when "Aged Brie"
         increase_quality_of_cheese(item)
       when "Backstage passes to a TAFKAL80ETC concert"
@@ -40,27 +23,30 @@ class GildedRose
       #decreases sell_in
       decrease_sell_in_of(item)
 
-      #decreases quality
-      if item.sell_in < 0
-        if item.name != "Aged Brie"
-          if item.name != "Backstage passes to a TAFKAL80ETC concert"
-            if item.name != "Sulfuras, Hand of Ragnaros"
-              reduce_quality_of(item)
-            end
-          else
-            item.quality = item.quality - item.quality
-          end
-        else
+    #   #decreases quality
+    #   if item.sell_in < 0
+    #     if item.name != "Aged Brie"
+    #       if item.name != "Backstage passes to a TAFKAL80ETC concert"
+    #         if item.name != "Sulfuras, Hand of Ragnaros"
+    #         end
+    #       else
+    #         item.quality = item.quality - item.quality
+    #       end
+    #     else
           
-        end
-      end
+    #     end
+    #   end
     end
   end
 
 
   #new methods
   def reduce_quality_of(item, reduction = 1)
-    item.quality -= reduction unless item.quality <= 0
+    if item.sell_in >= 0
+      item.quality -= reduction unless item.quality <= 0
+    else
+      2.times{ item.quality -= reduction unless item.quality <= 0 }
+    end
   end
 
   def increase_quality_of(item, increase = 1)
@@ -73,9 +59,13 @@ class GildedRose
   end
 
   def increase_quality_of_passes(item)
-    increase_quality_of(item)
-    increase_quality_of(item) if item.sell_in <= 10
-    increase_quality_of(item) if item.sell_in <= 5
+    if item.sell_in >= 0
+      increase_quality_of(item)
+      increase_quality_of(item) if item.sell_in <= 10
+      increase_quality_of(item) if item.sell_in <= 5
+    else
+      item.quality = 0
+    end
   end
 
   def decrease_sell_in_of(item)

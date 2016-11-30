@@ -26,6 +26,12 @@ class GildedRose
         end
       end
 
+      case item.name
+      when "Aged Brie"
+      when "Backstage passes to a TAFKAL80ETC concert"
+      when "Sulfuras, Hand of Ragnaros"
+      end
+
 
 
       #decreases sell_in

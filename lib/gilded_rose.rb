@@ -56,8 +56,8 @@ class GildedRose
     item.quality -= 1
   end
 
-  def increase_quality_of(item, increase)
-    item.quality += increase
+  def increase_quality_of(item)
+    item.quality += 1
   end
 end
 

@@ -51,6 +51,10 @@ class GildedRose
       end
     end
   end
+
+  def reduce_quality_of(item, reduction)
+    item.quality -= reduction
+  end
 end
 
 class Item

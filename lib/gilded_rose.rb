@@ -45,7 +45,7 @@ class GildedRose
   end
 
   def reduce_quality_of(item)
-    item.quality -= 1
+    item.quality -= 1 unless item.quality <= 0
   end
 
   def increase_quality_of(item)

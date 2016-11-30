@@ -37,15 +37,20 @@ class GildedRose
   end
 
   def increase_quality_of_cheese(item)
-    increase_quality_of(item)
-    increase_quality_of(item) if item.sell_in < 0
+    if item.sell_in >= 0
+      increase_quality_of(item)
+    else
+      2.times{ increase_quality_of(item) }
+    end
   end
 
   def increase_quality_of_passes(item)
-    if item.sell_in >= 0
+    if item.sell_in > 10
       increase_quality_of(item)
-      increase_quality_of(item) if item.sell_in <= 10
-      increase_quality_of(item) if item.sell_in <= 5
+    elsif item.sell_in <= 10 and item.sell_in > 5
+      2.times{ increase_quality_of(item) }
+    elsif item.sell_in <= 5 and item.sell_in >=0
+      3.times{ increase_quality_of(item) }
     else
       item.quality = 0
     end

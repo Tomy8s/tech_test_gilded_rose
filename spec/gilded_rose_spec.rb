@@ -60,6 +60,11 @@ describe GildedRose do
         4.times{ subject.update_quality }
         expect(items[4].quality).to eq 50
       end
+
+      it "sets quality to 0 and doesn't change it after sell by" do
+        20.times{ subject.update_quality }
+        expect(items[4].quality).to eq 0
+      end
     end
 
     context "when backstage passes (10 days to concert) age([5])" do
@@ -71,6 +76,11 @@ describe GildedRose do
         4.times{ subject.update_quality }
         expect(items[5].quality).to eq 50
       end
+
+      it "sets quality to 0 and doesn't change it after sell by" do
+        20.times{ subject.update_quality }
+        expect(items[5].quality).to eq 0
+      end
     end
 
     context "when backstage passes (15 days to concert) age([4])" do
@@ -81,6 +91,11 @@ describe GildedRose do
       it "does not increase quality over 50" do
         4.times{ subject.update_quality }
         expect(items[6].quality).to eq 50
+      end
+
+      it "sets quality to 0 and doesn't change it after sell by" do
+        20.times{ subject.update_quality }
+        expect(items[6].quality).to eq 0
       end
     end
 
